@@ -22,7 +22,7 @@ namespace CartAPI.Controllers
 				filtered = filtered.Where(x => x.Product.StartsWith(prefix, StringComparison.OrdinalIgnoreCase));
 
 			if (pageSize > 0)
-				filtered = filtered.Take((page * pageSize)..((page + 1) * pageSize));
+				filtered = filtered.Skip(page * pageSize).Take(pageSize);
 
 			return Ok(filtered);
 		}
